@@ -1,5 +1,5 @@
 # Stage3DtoPNG
-Utility class for rendering out the content of the Stage3D.context3D to a PNG file. It works great for creating image sequences for any phase of your rendering. You can have as many instances of Stage3DtoPNG as you need. 
+Utility class for rendering out the content of the Stage3D.context3D to a PNG file. It works great for creating image sequences for any phase of your rendering. You can have as many instances of Stage3DtoPNG as you need. Saving files only works with air apps and not with browser plugins. You can develop in air and target the browser later if you need to.
 
 Usage:
 
