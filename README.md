@@ -7,7 +7,7 @@ usage:
 
 1. for every sequence of images you require, create an instance of the class:
 
-private var pngRender:Stage3DtoPNG;
+- private var pngRender:Stage3DtoPNG;
 
 
 2. you have a few options when first creating the render pertaining to the bitmap ( width, height, transparency, fill )
@@ -15,12 +15,12 @@ transparency defaults to true and the fill defaults to 0x00000000.
 
  a. to preserve alphas do this:
 
-pngRender = new Stage3DPNG( viewWidth, viewHeight );
+- pngRender = new Stage3DPNG( viewWidth, viewHeight );
 
 
  b. for no transparency and a black fill use:
 
-pngRender = new Stage3DtoPNG( viewWidth, viewHeight, false, 0xffffff);
+- pngRender = new Stage3DtoPNG( viewWidth, viewHeight, false, 0xffffff);
 
 
 3. Next you must initialize where the png sequence will be saved
@@ -33,22 +33,22 @@ compression takes a while so it is off by default
 
  a. by default the files will be saved in "/Documents/Stage3D_ouput", file name "RenderedFrame_x.png”, no compression:
 
-pngRender.initRenderToFile();
+- pngRender.initRenderToFile();
 
  b. here the files are saved to "/Documents/MyRenders" with the name "output_frame_x.png”:
 
-pngRender.initRendertoFile("MyRenders","output_frame");
+- pngRender.initRendertoFile("MyRenders","output_frame");
 
  c. here the files are saved to "/Documents/small_renders" , as "frame_x.png” , and compression on:
 
-pngRender.initRenderToFiles("small_renders","frame",true);
+- pngRender.initRenderToFiles("small_renders","frame",true);
 
 
 4. placing the function call to render the png is up to you. the png is created from the back buffer.
 it must be called before your context3D.present() is called because this clears out the back buffer.
 you must pass a context3D to render the file, the back buffer of the context3D will be rendered in its current state:
 
-pngRender.renderToFile( context3D );
+- pngRender.renderToFile( context3D );
 
 
 in closing:
