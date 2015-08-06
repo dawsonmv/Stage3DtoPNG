@@ -23,10 +23,10 @@ transparency defaults to true and the fill defaults to 0x00000000.
 - pngRender = new Stage3DtoPNG( viewWidth, viewHeight, false, 0xffffff);
 
 
-Next you must initialize where the png sequence will be saved
-a new directory will automatically be created inside the documents folder
-to compress the png files set the last option to true
-compression takes a while so it is off by default
+Next you must initialize where the png sequence will be saved.
+A new directory will automatically be created inside the documents folder.
+To compress the png files set the last option to true.
+Compression takes a while so it is off by default.
 
 !!!CAUTION!!! 
 *** if you do not change the folder name or filename your files will be over written ***
@@ -35,9 +35,11 @@ compression takes a while so it is off by default
 
 - pngRender.initRenderToFile();
 
+
  b. here the files are saved to "/Documents/MyRenders" with the name "output_frame_x.png”:
 
 - pngRender.initRendertoFile("MyRenders","output_frame");
+
 
  c. here the files are saved to "/Documents/small_renders" , as "frame_x.png” , and compression on:
 
