@@ -38,7 +38,7 @@ package com.util
 		public function initRenderToFile( outputFolder:String = "Stage3D_output" , fileName:String = "RenderedFrame" , compression:Boolean = false ):void
 		{
 			//Setting up PNG options: true for fast encoding, false for more compression
-			_PNGoptions = new PNGEncoderOptions(compression);
+			_PNGoptions = new PNGEncoderOptions(!compression);
 			
 			// setting up output file location and naming
 			_fileIterator = new int(0);
