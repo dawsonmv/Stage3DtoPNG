@@ -23,15 +23,13 @@ package com.util
 		private var _outPutDirectory:File;
 		
 		private var _bitmapRect:Rectangle;
-		private var _renderData:BitmapData;
-		private var _encodeBytes:ByteArray;
+		private var _useRGBA:Boolean;
 		private var _inited:Boolean;
 		
-		public function Stage3DtoPNG( width:int , height:int , transparency:Boolean = true , fill:uint = 0x00000000 )
+		public function Stage3DtoPNG( width:int , height:int , useRGBA:Boolean = false )
 		{
 			_bitmapRect = new Rectangle( 0 , 0 , width , height );
-			_renderData = new BitmapData( width , height , transparency , fill );
-			_encodeBytes = new ByteArray();
+			_useRGBA = useRGBA;
 			_inited = false;
 		}
 		
@@ -53,19 +51,21 @@ package com.util
 		{
 			if (_inited)
 			{	
+				var renderData:BitmapData = new BitmapData( _bitmapRect.width , _bitmapRect.height , _useRGBA, 0x00000000 );;
+				var encodeBytes:ByteArray = new ByteArray();
 
 				var PNGFileStream:FileStream = new FileStream();
 				var PNGFile:File = _outPutDirectory.resolvePath( _fileName + "_" + _fileIterator + ".png" );
 			
 				// render buffer to bitmapdata
-				context.drawToBitmapData( _renderData );
+				context.drawToBitmapData( renderData );
 						
 				//encode bimap with png to bytearray
-				_renderData.encode( _bitmapRect, _PNGoptions, _encodeBytes );
+				renderData.encode( _bitmapRect, _PNGoptions, encodeBytes );
 			
 				// save to file
 				PNGFileStream.open( PNGFile , FileMode.WRITE );
-				PNGFileStream.writeBytes( _encodeBytes );
+				PNGFileStream.writeBytes( encodeBytes );
 				PNGFileStream.close();
 			
 				// iterate file number
