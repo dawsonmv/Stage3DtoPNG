@@ -1,5 +1,5 @@
 # Stage3DtoPNG
-Utility class for rendering out the content of the Stage3D.context3D to a PNG file. It works great for creating image sequences for any phase of your rendering. You can have as many instances of Stage3DtoPNG as you need. Saving files only works with air apps and not with browser plugins. You can develop in air and target the browser later if you need to.
+Utility class for rendering out the content of the Stage3D.context3D to a PNG file. It works great for creating image sequences for any phase of your rendering. You can have as many instances of Stage3DtoPNG as you need. Saving files only works with air apps and not with browser plugins. You can develop in air and target the browser later if you need to. This works with all frameworks built on top of the Stage3D API. 
 
 Usage:
 
@@ -9,17 +9,17 @@ For every sequence of images you require, create an instance of the class:
 - private var pngRender:Stage3DtoPNG;
 
 
-You have a few options when first creating the render pertaining to the bitmap ( width, height, transparency, fill ). Transparency defaults to true and the fill defaults to 0x00000000. The width and height should be set to your view width and height, if it is not your image will be cropped.
+You have a few options when first creating the render pertaining to the bitmap ( width, height, useRGBA ). The width and height should be set to your contex3D.backBuffer width and height. Setting your width and height larger will not scale your image, if it is smaller your image will be cropped. By default useRGBA is false for speed, this creates a 24bit image. If useRGBA is set to true then 32bit png will be created. 
 
 
-To preserve alphas do this:
+For 24bit png use:
 
 - pngRender = new Stage3DPNG( viewWidth, viewHeight );
 
 
-For no transparency and a black fill use:
+For a 32bit png use:
 
-- pngRender = new Stage3DtoPNG( viewWidth, viewHeight, false, 0xffffff);
+- pngRender = new Stage3DtoPNG( viewWidth, viewHeight, true);
 
 
 Next you must initialize where the png sequence will be saved. A new directory will automatically be created inside the documents folder. To compress the png files set the last option to true. Compression takes a while so it is off by default.
@@ -47,6 +47,7 @@ Placing the function call to render the png is up to you. The png is created fro
 
 - pngRender.renderToFile( context3D );
 
+If you are using a framework built on top of Stage3D such as Away3D, Citrus, Flare, Starling, Zest, etc... You just need to access the context3D that particular framework is using. ( ie. Straling.context )  You may have to do a little digging to find how,where, and when to access your frameworks context3D. In the future I will update the documentation with examples of popular frameworks.
 
 In closing:
 Yes you can have multiple pngRenders sending files to different folders with different names. This can be useful if you need to render out different phases of your frame. 
