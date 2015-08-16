@@ -47,15 +47,15 @@ Placing the function call to render the png is up to you. The png is created fro
 
 - pngRender.renderToFile( context3D );
 
-If you are using a framework built on top of Stage3D such as Away3D, Citrus, Flare, Starling, Zest, etc... You just need to access the context3D that particular framework is using. ( ie. Straling.context )  You may have to do a little digging to find how,where, and when to access your frameworks context3D. In the future I will update the documentation with examples of popular frameworks.
+If you are using a framework built on top of Stage3D such as Away3D, Citrus, Flare, Starling, Zest, etc... If the framework you are using supports shared Stage3D or shared context it is much easier to implement. If your framework does not support shared stage3D/context you may have to do a little digging to find how,where, and when to access your frameworks context3D. In the future I will update the documentation with examples of popular frameworks.
+
+Here are some gists of ones if have done so far:
+
+- Raw Stage3D: https://gist.github.com/dawsonmv/53fb1925f9691ad7cf4a
+- Starling: https://gist.github.com/dawsonmv/4d6c563fb5af7efba4c1
 
 In closing:
-Yes you can have multiple pngRenders sending files to different folders with different names. This can be useful if you need to render out different phases of your frame. 
-
-The easiest way to turn off the creation of pngs during development is to comment out the .initRenderFile(...)
-An error message will be traced but no file will be created.
-
-When you want to resume png creation you can simply uncomment the line.
+Yes you can have multiple pngRenders sending files to different folders with different names. This can be useful if you need to render out different phases of your frame. Implementing this also varies depending on your framework.
 
 You can keep up with any further developments here:
 https://github.com/dawsonmv/Stage3DtoPNG.git
